@@ -1,4 +1,5 @@
 export default function ScreenReader ({ currentWord, guessedLetters, lastGuessedLetter, numGuessesLeft }) {
+  if (!lastGuessedLetter) return null
   const statusText = currentWord
     .split('')
     .map((letter) => (guessedLetters.includes(letter) ? letter + '.' : 'blank.'))
