@@ -2,45 +2,25 @@ import styles from './StatusBanner.module.scss'
 import { clsx } from 'clsx'
 import { getFarewellText } from '../../utils/farewellText'
 
-export default function StatusBanner ({ gameStatus, eliminatedLanguageName }) {
-  function getBannerContent (gameStatus, eliminatedLanguageName) {
+export default function StatusBanner({ gameStatus, eliminatedLanguageName }) {
+  const statusMap = {
+    default: { title: '', text: '', modifierClass: 'default' },
+    farewell: {
+      title: getFarewellText(eliminatedLanguageName),
+      text: '',
+      modifierClass: 'farewell'
+    },
+    playing: { title: 'Keep going!', text: 'Guess the word!', modifierClass: 'playing' },
+    won: { title: 'You win!', text: 'Well Done!', modifierClass: 'won' },
+    lost: { title: 'You lose!', text: 'Try again!', modifierClass: 'lost' }
+  }
+  function getBannerContent(gameStatus, eliminatedLanguageName) {
     const { defaultMode, isGameWon, isGameLost, isGameOver, farewellToLanguage } = gameStatus
-    if (defaultMode) {
-      return {
-        title: '',
-        text: '',
-        modifierClass: 'default'
-      }
-    }
-    if (farewellToLanguage) {
-      return {
-        title: getFarewellText(eliminatedLanguageName),
-        text: '',
-        modifierClass: 'farewell'
-      }
-    }
-    if (!isGameOver) {
-      return {
-        title: 'Keep going!',
-        text: 'Guess the word!',
-        modifierClass: 'playing'
-      }
-    }
-    if (isGameWon) {
-      return {
-        title: 'You win!',
-        text: 'Well Done!',
-        modifierClass: 'won'
-      }
-    }
-
-    if (isGameLost) {
-      return {
-        title: 'You lose!',
-        text: 'Try again!',
-        modifierClass: 'lost'
-      }
-    }
+    if (defaultMode) return statusMap.default
+    if (farewellToLanguage) return statusMap.farewell
+    if (!isGameOver) return statusMap.playing
+    if (isGameWon) return statusMap.won
+    if (isGameLost) return statusMap.lost
     return null
   }
 
@@ -55,8 +35,7 @@ export default function StatusBanner ({ gameStatus, eliminatedLanguageName }) {
   )
 
   return (
-    <section className={bannerClassName} aria-live='polite' role='status'>
-
+    <section className={bannerClassName} aria-live="polite" role="status">
       {bannerContent.title && <h2 className={bannerTitleClassName}>{bannerContent.title}</h2>}
       {bannerContent.text && (
         <p className={styles['status-banner__description']}>{bannerContent.text}</p>
