@@ -2,6 +2,7 @@
 
 A word-guessing game where every wrong letter causes a programming language to disappear from the world. Save your favorite language before it’s too late!
 
+See live demo [here](https://play-assembly-endgame.netlify.app/) !
 ---
 
 ## Features
