@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use './statusBanner.variables' as sbVars;
+
+.status-banner {
+  @include flexCenter(column);
+  width: 352px;
+  height: 59px;
+  margin: 0 auto;
+  // 預設背景色（備援，實際會被 modifier class 蓋掉）
+  background-color: $color-playing;
+  transition: visibility 0.3s ease, background-color 0.3s ease;
+
+  // 動態背景色（根據狀態 playing / won / lost）
+  @each $state, $bgColor in sbVars.$status-banner-colors {
+    &--#{$state} {
+      background-color: $bgColor;
+    }
+  }
+  &--default{
+    visibility: hidden;
+  }
+
+  &__title {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 0.2rem;
+    color: $color-main;
+    font-size: $fs-main;
+    font-weight: $fw-main;
+
+    &--farewell {
+      font-style: italic;
+    }
+  }
+
+  &__description {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    color: $color-main;
+    font-size: 1rem;
+  }
+}

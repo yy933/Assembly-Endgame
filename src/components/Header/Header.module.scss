@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+
+.header {
+  text-align: center;
+}
+
+.header > h1 {
+  font-size: $fs-main;
+  font-weight: $fw-medium;
+  color: $color-main;
+}
+
+.header > p {
+  font-size: 0.875rem;
+  max-width: 350px;
+  color: $color-secondary;
+}

@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.languages-panel {
+  @include flexCenter;
+  flex-wrap: wrap;
+  max-width: 352px;
+  height: auto;
+  cursor: pointer;
+  &__item {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-weight: $fw-bold;
+    margin: $key-gap;
+    padding: $key-gap;
+    font-size: 0.875rem;
+    transition: transform 0.2s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  &__item--lost::before {
+    @include flexCenter;
+    content: '💀';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}

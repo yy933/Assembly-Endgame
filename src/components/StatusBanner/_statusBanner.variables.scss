@@ -1,0 +1,8 @@
+@use '../../styles/variables' as *;
+
+$status-banner-colors: (
+  playing:  #7A5EA7,
+  won:  #10A95B,
+  lost: #BA2A2A,
+  farewell:  #7A5EA7
+);

@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.keyBoard {
+  @include flexCenter(column);
+  width: fit-content;
+  gap: 0.5rem;
+  margin: 0 auto;
+  &__row {
+    display: flex;
+    gap: $key-gap;
+  }
+  &__key {
+    all: unset;
+    width: $key-size;
+    height: $key-size;
+    background-color: #fcba29;
+    color: $color-dark;
+    font-size: $fs-main;
+    font-weight: $fw-bold;
+    text-align: center;
+    cursor: pointer;
+    border-radius: $key-border-radius;
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    &.correct {
+      background-color: $key-correct-color;
+    }
+    &.wrong {
+      background-color: $key-wrong-color;
+    }
+    &.disabled {
+      background-color: $key-disabled-color;
+      cursor: not-allowed;
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+  &__reset {
+    all: unset;
+    cursor: pointer;
+    width: 228px;
+    height: $key-size;
+    text-align: center;
+    font-size: $fs-main;
+    font-weight: $fw-bold;
+    color: $color-dark;
+    margin-top: 1rem;
+    background-color: #11b5e5;
+    border-radius: $key-border-radius;
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.answerDisplay {
+  @include flexCenter;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw; 
+  height: auto;
+  background-color: rgba($color-main, 0.8);
+  color: $color-dark;
+  font-size: 2rem;
+}

@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.word {
+  width: 334px;
+  margin: 1.5rem auto;
+}
+
+.guessCount{
+  @include flexCenter;
+  font-size: $fs-main;
+  font-weight: $fw-medium;
+  color: $color-secondary;
+}
+
+.letter-container {
+  @include flexCenter;
+  gap: $key-gap;
+  &__letter {
+    @include flexCenter;
+    height: $key-size;
+    width: $key-size;
+    border-bottom: 2px solid $color-main;
+    background-color: #323232;
+    font-size: $fs-main;
+    font-weight: $fw-bold;
+  }
+}
