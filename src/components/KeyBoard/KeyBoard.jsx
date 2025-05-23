@@ -1,7 +1,13 @@
 import styles from './KeyBoard.module.scss'
 import { clsx } from 'clsx'
 
-export default function KeyBoard ({ currentWord, guessedLetters, setGuessedLetters, gameStatus, resetGame }) {
+export default function KeyBoard({
+  currentWord,
+  guessedLetters,
+  setGuessedLetters,
+  gameStatus,
+  resetGame
+}) {
   const { isGameLost, isGameOver } = gameStatus
   const row1 = 'qwertyuiop'
   const row2 = 'asdfghjklz'
@@ -13,23 +19,22 @@ export default function KeyBoard ({ currentWord, guessedLetters, setGuessedLette
       return [...prevLetters, letter]
     })
   }
+  function getKeyClass(letter) {
+    const isGuessed = guessedLetters.includes(letter)
+    const isCorrect = isGuessed && currentWord.includes(letter)
+
+    return clsx(styles.keyBoard__key, {
+      [styles.correct]: isGuessed && isCorrect,
+      [styles.wrong]: isGuessed && !isCorrect,
+      [styles.disabled]: isGameOver
+    })
+  }
 
   return (
     <section className={styles.keyBoard}>
       {[row1, row2, row3].map((row, index) => (
         <div key={index} className={styles.keyBoard__row}>
           {row.split('').map((letter) => {
-            function getKeyClass (letter) {
-              const isGuessed = guessedLetters.includes(letter)
-              const isCorrect = isGuessed && currentWord.includes(letter)
-
-              return clsx(styles.keyBoard__key, {
-                [styles.correct]: isGuessed && isCorrect,
-                [styles.wrong]: isGuessed && !isCorrect,
-                [styles.disabled]: isGameOver
-              })
-            }
-
             return (
               <button
                 key={`${letter}-${index}`}
