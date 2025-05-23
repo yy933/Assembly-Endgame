@@ -1,14 +1,13 @@
 import styles from './KeyBoard.module.scss'
-import { nanoid } from 'nanoid'
 import { clsx } from 'clsx'
 
-export default function KeyBoard({ currentWord, guessedLetters, setGuessedLetters, gameStatus, resetGame }) {
+export default function KeyBoard ({ currentWord, guessedLetters, setGuessedLetters, gameStatus, resetGame }) {
   const { isGameLost, isGameOver } = gameStatus
   const row1 = 'qwertyuiop'
   const row2 = 'asdfghjklz'
   const row3 = 'xcvbnm'
 
-  function addGuessedLetter(letter) {
+  function addGuessedLetter (letter) {
     setGuessedLetters((prevLetters) => {
       const lettersSet = new Set(prevLetters)
       lettersSet.add(letter)
@@ -19,9 +18,9 @@ export default function KeyBoard({ currentWord, guessedLetters, setGuessedLetter
   return (
     <section className={styles.keyBoard}>
       {[row1, row2, row3].map((row, index) => (
-        <div key={index} className={styles['keyBoard__row']}>
+        <div key={index} className={styles.keyBoard__row}>
           {row.split('').map((letter) => {
-            function getKeyClass(letter) {
+            function getKeyClass (letter) {
               const isGuessed = guessedLetters.includes(letter)
               const isCorrect = isGuessed && currentWord.includes(letter)
 
@@ -34,7 +33,7 @@ export default function KeyBoard({ currentWord, guessedLetters, setGuessedLetter
 
             return (
               <button
-                key={nanoid()}
+                key={`${letter}-${index}`}
                 className={getKeyClass(letter)}
                 onClick={() => addGuessedLetter(letter)}
                 disabled={isGameOver}
@@ -48,7 +47,7 @@ export default function KeyBoard({ currentWord, guessedLetters, setGuessedLetter
         </div>
       ))}
       {isGameOver && (
-        <button className={styles['keyBoard__reset']} onClick={resetGame}>
+        <button className={styles.keyBoard__reset} onClick={resetGame}>
           New Game
         </button>
       )}

@@ -1,9 +1,8 @@
 import styles from './LanguagesPanel.module.scss'
 import { languages } from '../../data/languages'
-import { nanoid } from 'nanoid'
 import { clsx } from 'clsx'
 
-export default function LanguagesPanel({wrongGuessCount}) {
+export default function LanguagesPanel ({ wrongGuessCount }) {
   return (
     <section className={styles['languages-panel']}>
       <ul>
@@ -14,13 +13,9 @@ export default function LanguagesPanel({wrongGuessCount}) {
             color: language.color
           }
           const languageClassName = clsx(styles['languages-panel__item'], isLanguageLost && styles['languages-panel__item--lost'])
-          
+
           return (
-            <li
-              key={nanoid()}
-              className={languageClassName}
-              style={elementStyles}
-            >
+            <li key={`${language.name}-${index}`} className={languageClassName} style={elementStyles}>
               {language.name}
             </li>
           )

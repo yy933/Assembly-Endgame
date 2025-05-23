@@ -10,7 +10,7 @@ import { useState } from 'react'
 import Confetti from 'react-confetti'
 import './styles/global.scss'
 
-function App() {
+function App () {
   const [currentWord, setCurrentWord] = useState(() => getRandomWord())
   const [guessedLetters, setGuessedLetters] = useState([])
 
@@ -27,10 +27,9 @@ function App() {
   const farewellToLanguage = !isGameOver && isLastGuessIncorrect
   const eliminatedLanguageName = farewellToLanguage ? languages[wrongGuess.length - 1]?.name : null
 
-  function resetGame(){
+  function resetGame () {
     setCurrentWord(getRandomWord())
     setGuessedLetters([])
-  
   }
 
   return (

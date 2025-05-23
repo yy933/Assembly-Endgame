@@ -2,9 +2,8 @@ import styles from './StatusBanner.module.scss'
 import { clsx } from 'clsx'
 import { getFarewellText } from '../../utils/farewellText'
 
-
-export default function StatusBanner({ gameStatus, eliminatedLanguageName }) {
-  function getBannerContent(gameStatus, eliminatedLanguageName) {
+export default function StatusBanner ({ gameStatus, eliminatedLanguageName }) {
+  function getBannerContent (gameStatus, eliminatedLanguageName) {
     const { defaultMode, isGameWon, isGameLost, isGameOver, farewellToLanguage } = gameStatus
     if (defaultMode) {
       return {
@@ -56,8 +55,8 @@ export default function StatusBanner({ gameStatus, eliminatedLanguageName }) {
   )
 
   return (
-    <section className={bannerClassName} aria-live="polite" role="status">
-     
+    <section className={bannerClassName} aria-live='polite' role='status'>
+
       {bannerContent.title && <h2 className={bannerTitleClassName}>{bannerContent.title}</h2>}
       {bannerContent.text && (
         <p className={styles['status-banner__description']}>{bannerContent.text}</p>
