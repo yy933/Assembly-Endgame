@@ -7,11 +7,10 @@ export default function KeyBoard ({ currentWord, guessedLetters, setGuessedLette
   const row2 = 'asdfghjklz'
   const row3 = 'xcvbnm'
 
-  function addGuessedLetter (letter) {
+  function addGuessedLetter(letter) {
     setGuessedLetters((prevLetters) => {
-      const lettersSet = new Set(prevLetters)
-      lettersSet.add(letter)
-      return Array.from(lettersSet)
+      if (prevLetters.includes(letter)) return prevLetters
+      return [...prevLetters, letter]
     })
   }
 
