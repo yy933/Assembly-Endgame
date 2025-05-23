@@ -1,7 +1,7 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-.keyBoard {
+.keyboard {
   @include flexCenter(column);
   width: fit-content;
   gap: 0.5rem;

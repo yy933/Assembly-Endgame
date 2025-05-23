@@ -23,7 +23,7 @@ export default function KeyBoard({
     const isGuessed = guessedLetters.includes(letter)
     const isCorrect = isGuessed && currentWord.includes(letter)
 
-    return clsx(styles.keyBoard__key, {
+    return clsx(styles.keyboard__key, {
       [styles.correct]: isGuessed && isCorrect,
       [styles.wrong]: isGuessed && !isCorrect,
       [styles.disabled]: isGameOver
@@ -31,9 +31,9 @@ export default function KeyBoard({
   }
 
   return (
-    <section className={styles.keyBoard}>
+    <section className={styles.keyboard}>
       {[row1, row2, row3].map((row, index) => (
-        <div key={index} className={styles.keyBoard__row}>
+        <div key={index} className={styles.keyboard__row}>
           {row.split('').map((letter) => {
             return (
               <button
@@ -51,7 +51,7 @@ export default function KeyBoard({
         </div>
       ))}
       {isGameOver && (
-        <button className={styles.keyBoard__reset} onClick={resetGame}>
+        <button className={styles.keyboard__reset} onClick={resetGame} type='button'>
           New Game
         </button>
       )}
