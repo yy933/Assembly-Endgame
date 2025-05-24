@@ -1,0 +1,29 @@
+@use './variables' as *;
+
+%key-shared {
+  all: unset;
+  width: $key-size;
+  height: $key-size;
+  color: $color-dark;
+  font-size: $fs-main;
+  font-weight: $fw-bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: $key-border-radius;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+%key-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+%reset-button {
+  @extend %key-shared;
+  width: 228px;
+  margin-top: 1rem;
+}
