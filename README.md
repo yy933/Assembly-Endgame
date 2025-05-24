@@ -62,7 +62,7 @@ You can personalize your game by modifying:
 
 * `src/data/languages.js`: Update the list of languages and images
 
-* `src/data/farewellText.js`: Customize elimination messages (e.g. “Farewell, JavaScript”)
+* `src/utils/farewellText.js`: Customize elimination messages (e.g. “Farewell, JavaScript”)
 
 ## Accessibility
 Includes aria-live support for screen readers.
