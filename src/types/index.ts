@@ -6,6 +6,7 @@ export type KeyBoardProps = {
   gameStatus: {
     isGameLost: boolean
     isGameOver: boolean
+    isGameWon: boolean
   }
   resetGame: () => void
 }
@@ -31,6 +32,7 @@ export type StatusBannerProps = {
     farewellToLanguage: boolean
   }
   eliminatedLanguageName: string | null
+  wrongGuessCount: number
 }
 
 export type BannerContentProps = {

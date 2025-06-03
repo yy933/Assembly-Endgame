@@ -27,7 +27,7 @@ function App() {
   
   return (
     <>
-      {isGameWon && <Confetti numberOfPieces="500" />}
+      {isGameWon && <Confetti numberOfPieces={500} />}
       <Header />
       <StatusBanner
         gameStatus={{
@@ -50,7 +50,7 @@ function App() {
       <ScreenReader
         currentWord={currentWord}
         guessedLetters={guessedLetters}
-        lastGuessedLetter={lastGuessedLetter}
+        lastGuessedLetter={lastGuessedLetter ?? null}
         numGuessesLeft={numGuessesLeft}
       />
       <KeyBoard
