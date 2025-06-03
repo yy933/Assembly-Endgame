@@ -7,7 +7,7 @@ export default function StatusBanner({ gameStatus, eliminatedLanguageName }: Sta
   const statusMap = {
     default: { title: '', text: '', modifierClass: 'default' },
     farewell: {
-      title: getFarewellText(eliminatedLanguageName),
+      title: getFarewellText(eliminatedLanguageName ?? ''),
       text: '',
       modifierClass: 'farewell'
     },
