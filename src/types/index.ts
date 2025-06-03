@@ -10,3 +10,7 @@ export type KeyBoardProps = {
   }
   resetGame: () => void
 }
+// LanguagesPanel Props Types
+export type LanguagesPanelProps = {
+  wrongGuessCount: number
+}
