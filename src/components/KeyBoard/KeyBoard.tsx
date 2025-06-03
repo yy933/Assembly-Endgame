@@ -1,5 +1,6 @@
 import styles from './KeyBoard.module.scss'
 import { clsx } from 'clsx'
+import { KeyBoardProps } from '../../types'
 
 export default function KeyBoard({
   currentWord,
@@ -7,19 +8,19 @@ export default function KeyBoard({
   setGuessedLetters,
   gameStatus,
   resetGame
-}) {
+}: KeyBoardProps) {
   const { isGameLost, isGameOver } = gameStatus
   const row1 = 'qwertyuiop'
   const row2 = 'asdfghjklz'
   const row3 = 'xcvbnm'
 
-  function addGuessedLetter(letter) {
-    setGuessedLetters((prevLetters) => {
+  function addGuessedLetter(letter: string) {
+    setGuessedLetters((prevLetters: string[]) => {
       if (prevLetters.includes(letter)) return prevLetters
       return [...prevLetters, letter]
     })
   }
-  function getKeyClass(letter) {
+  function getKeyClass(letter: string) {
     const isGuessed = guessedLetters.includes(letter)
     const isCorrect = isGuessed && currentWord.includes(letter)
 
