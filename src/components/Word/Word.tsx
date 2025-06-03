@@ -1,6 +1,12 @@
 import styles from './Word.module.scss'
+import { WordProps } from '../../types'
 
-export default function Word ({ currentWord, guessedLetters, wrongGuessCount, numGuessesLeft }) {
+export default function Word({
+  currentWord,
+  guessedLetters,
+  wrongGuessCount,
+  numGuessesLeft
+}: WordProps) {
   return (
     <section className={styles.word}>
       <p className={styles.guessCount}>

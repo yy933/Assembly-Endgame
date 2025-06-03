@@ -39,3 +39,10 @@ export type BannerContentProps = {
   modifierClass: string
 }
 
+// Word Props Types
+export type WordProps = {
+  currentWord: string
+  guessedLetters: string[]
+  wrongGuessCount: number
+  numGuessesLeft: number
+}
