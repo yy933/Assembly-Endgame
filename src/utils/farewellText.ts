@@ -1,4 +1,4 @@
-import { words } from '../data/words.js'
+import { words } from '../data/words'
 export function getFarewellText(language: string): string {
   const options = [
     `Farewell, ${language}`,

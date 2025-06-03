@@ -3,8 +3,8 @@ import { getRandomWord } from '../utils/farewellText'
 import { languages } from '../data/languages'
 
 export function useGameStatus() {
-  const [currentWord, setCurrentWord] = useState(() => getRandomWord())
-  const [guessedLetters, setGuessedLetters] = useState([])
+  const [currentWord, setCurrentWord] = useState<string>(() => getRandomWord())
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
   const maxWrongGuesses = languages.length - 1
   const wrongGuess = guessedLetters.filter((letter) => !currentWord.includes(letter))
@@ -14,7 +14,7 @@ export function useGameStatus() {
   const isGameWon = currentWord.split('').every((letter) => guessedLetters.includes(letter))
   const isGameLost = wrongGuess.length >= maxWrongGuesses
   const isGameOver = isGameWon || isGameLost
-  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+  const lastGuessedLetter: string | undefined = guessedLetters[guessedLetters.length - 1]
   const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
   const farewellToLanguage = !isGameOver && isLastGuessIncorrect
   const eliminatedLanguageName = farewellToLanguage ? languages[wrongGuess.length - 1]?.name : null
