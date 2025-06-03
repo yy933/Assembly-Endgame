@@ -1,8 +1,9 @@
 import styles from './StatusBanner.module.scss'
 import { clsx } from 'clsx'
 import { getFarewellText } from '../../utils/farewellText'
+import { StatusBannerProps, BannerContentProps } from '../../types'
 
-export default function StatusBanner({ gameStatus, eliminatedLanguageName }) {
+export default function StatusBanner({ gameStatus, eliminatedLanguageName }: StatusBannerProps) {
   const statusMap = {
     default: { title: '', text: '', modifierClass: 'default' },
     farewell: {
@@ -14,14 +15,14 @@ export default function StatusBanner({ gameStatus, eliminatedLanguageName }) {
     won: { title: 'You win!', text: 'Well Done!', modifierClass: 'won' },
     lost: { title: 'You lose!', text: 'Try again!', modifierClass: 'lost' }
   }
-  function getBannerContent(gameStatus, eliminatedLanguageName) {
+  function getBannerContent(gameStatus: StatusBannerProps['gameStatus'], eliminatedLanguageName: string | null): BannerContentProps {
     const { defaultMode, isGameWon, isGameLost, isGameOver, farewellToLanguage } = gameStatus
     if (defaultMode) return statusMap.default
     if (farewellToLanguage) return statusMap.farewell
     if (!isGameOver) return statusMap.playing
     if (isGameWon) return statusMap.won
     if (isGameLost) return statusMap.lost
-    return null
+    return statusMap.default
   }
 
   const bannerContent = getBannerContent(gameStatus, eliminatedLanguageName)

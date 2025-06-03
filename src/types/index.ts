@@ -4,7 +4,6 @@ export type KeyBoardProps = {
   guessedLetters: string[]
   setGuessedLetters: React.Dispatch<React.SetStateAction<string[]>>
   gameStatus: {
-    isGameWon: boolean
     isGameLost: boolean
     isGameOver: boolean
   }
@@ -13,4 +12,22 @@ export type KeyBoardProps = {
 // LanguagesPanel Props Types
 export type LanguagesPanelProps = {
   wrongGuessCount: number
+}
+
+// StatusBanner Props Types
+export type StatusBannerProps = {
+  gameStatus: {
+    defaultMode: boolean
+    isGameWon: boolean
+    isGameLost: boolean
+    isGameOver: boolean
+    farewellToLanguage: boolean
+  }
+  eliminatedLanguageName: string | null
+}
+
+export type BannerContentProps = {
+  title: string
+  text: string
+  modifierClass: string
 }
