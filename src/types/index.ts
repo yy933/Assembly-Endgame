@@ -14,6 +14,13 @@ export type LanguagesPanelProps = {
   wrongGuessCount: number
 }
 
+// ScreenReader Props Types
+export type ScreenReaderProps = {
+  currentWord: string
+  guessedLetters: string[]
+  lastGuessedLetter: string | null
+  numGuessesLeft: number
+}
 // StatusBanner Props Types
 export type StatusBannerProps = {
   gameStatus: {
@@ -31,3 +38,4 @@ export type BannerContentProps = {
   text: string
   modifierClass: string
 }
+
